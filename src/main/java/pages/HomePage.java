@@ -9,7 +9,7 @@ import java.util.List;
 
 public class HomePage {
     public WebDriver driver;
-
+   // public  By productConfirmation = By.partialLinkText("View cart");
     public HomePage(WebDriver driver){
         this.driver = driver;
     }
@@ -27,20 +27,18 @@ public class HomePage {
         JavascriptExecutor js = (JavascriptExecutor)  driver;
         js.executeScript("window.scrollBy(0,document.body.scrollHeight)");
     }
-    public boolean addToCart(int productId){
-        List<WebElement> elements = driver.findElements(By.cssSelector(".astra-shop-summary-wrap a.button"));
-        elements.get(productId).click();
-        By productConfirmation = By.partialLinkText("View cart");
-        List<WebElement> confirmationElements = driver.findElements(productConfirmation);
-        if(!confirmationElements.isEmpty()){
-            return false;
-        }else{
-            return true;
-        }
-    }
+
     public StorePage clickStore(){
         clickLinks("Store");
         return new StorePage(driver);
+    }
+    public MenPage clickMen(){
+        clickLinks("Men");
+        return new MenPage (driver);
+    }
+    public WomenPage clickWomen(){
+        clickLinks("Women");
+        return new WomenPage(driver);
     }
 
     public void clickLinks(String linkText){

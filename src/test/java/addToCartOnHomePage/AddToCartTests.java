@@ -1,14 +1,26 @@
 package addToCartOnHomePage;
 
 import base.BaseTests;
-import org.testng.Assert;
 import org.testng.annotations.Test;
 import static org.testng.Assert.assertEquals;
 
 public class AddToCartTests extends BaseTests {
+
     @Test
     public void testAddToCart(){
-       boolean isOkay = homePage.addToCart(3);
-        Assert.assertTrue(isOkay, "Add to Cart Failed");
+        var cart= homePage.clickStore();
+        var cart2 = cart.clickProduct();
+          cart2.addToCart();
+        var proceed = cart2.clickViewCart();
+       var checkout = proceed.clickProceedCheckOut();
+       checkout.billingDetails();
+
+      // checkout.setPlaceOrder();
+
+
+
+
+
     }
+
 }

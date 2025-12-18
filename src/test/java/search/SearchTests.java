@@ -10,7 +10,7 @@ public class SearchTests extends BaseTests {
     @Test
     public void testSearch(){
         var search = homePage.clickStore();
-        search.searchProduct("jeans");
+        search.searchProduct("Jeans".toLowerCase());
         search.clickSearchButton();
         boolean confirmation = search.verifySearchResultsAreRelevant();
         Assert.assertTrue(confirmation, "Product is not displayed");

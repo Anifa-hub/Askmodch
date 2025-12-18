@@ -8,7 +8,7 @@ import org.testng.annotations.BeforeMethod;
 import pages.HomePage;
 
 public class BaseTests {
-    private WebDriver driver;
+    public WebDriver driver;
     protected HomePage homePage;
 
     @BeforeClass
@@ -22,6 +22,7 @@ public class BaseTests {
     public void goHome(){
         driver.get("https://askomdch.com/");
     }
+
 //    @AfterClass
 //    public void tearDown(){
 //        driver.quit();
