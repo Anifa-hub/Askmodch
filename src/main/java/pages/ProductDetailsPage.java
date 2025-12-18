@@ -23,9 +23,7 @@ public class ProductDetailsPage {
 
     }
     public ViewCartPage clickViewCart(){
-
        wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("a[class='button wc-forward']"))).click();
-
         return new ViewCartPage(driver);
 
     }

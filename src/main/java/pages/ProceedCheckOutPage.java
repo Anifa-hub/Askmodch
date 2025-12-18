@@ -22,8 +22,7 @@ public class ProceedCheckOutPage {
     private By zipCode = By.id("billing_postcode");
     private By emailAddress = By.id("billing_email");
     private By phone = By.id("billing_phone");
-    //private By placeOrderBtn = By.id("place_order");
-   // public By placeOrder = By.id("place_order");
+
 
     public ProceedCheckOutPage(WebDriver driver) {
         this.driver = driver;
