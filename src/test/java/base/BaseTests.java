@@ -15,12 +15,12 @@ public class BaseTests {
     public void setUp(){
         System.setProperty("webdriver.chrome.driver","resources/chromedriver.exe");
         driver = new ChromeDriver();
-        goHome();
-        homePage = new HomePage(driver);
+
     }
     @BeforeMethod
     public void goHome(){
         driver.get("https://askomdch.com/");
+        homePage = new HomePage(driver);
     }
 
 //    @AfterClass

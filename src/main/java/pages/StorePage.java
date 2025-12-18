@@ -1,6 +1,7 @@
 package pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -17,7 +18,7 @@ public class StorePage {
     public By searchButton = By.cssSelector("button[type='submit']");
     public By productTittleContainer = By.cssSelector(".ast-loop-product__link");
     public By productNotFound = By.cssSelector(".woocommerce-no-products-found");
-    public By minPrice = By.cssSelector(".ui-slider-handle:nth-child(2)");
+    public By sliderSelector = By.cssSelector(".ui-slider-handle");
     public By maxPrice = By.cssSelector(".ui-slider-handle:nth-child(3)");
     public By filterButton = By.cssSelector("button[type='submit']");
 
@@ -58,23 +59,26 @@ public class StorePage {
     }
 
     public void filterByPriceRange(int start, int end){
-        Actions actions = new Actions(driver);
 
-        WebElement minHandle = wait.until(ExpectedConditions.elementToBeClickable(minPrice));
-        WebElement maxHandle = wait .until(ExpectedConditions.elementToBeClickable(maxPrice));
-
-        actions.dragAndDropBy(minHandle, start, 0).perform();
-        actions.dragAndDropBy(maxHandle, -end, 0).perform();
-
-        wait.until(ExpectedConditions.elementToBeClickable(filterButton)).click();
-
-
-
-
+        List<WebElement> slider = driver.findElements(sliderSelector);
+        while(Integer.parseInt(driver.findElement(By.className("from")).getText().substring(1)) < start){
+            slider.getFirst().sendKeys(Keys.ARROW_RIGHT);
+        }
+        while(Integer.parseInt(driver.findElement(By.className("to")).getText().substring(1)) > end){
+            slider.get(1).sendKeys(Keys.ARROW_LEFT);
+        }
+        driver.findElement(filterButton).click();
+//        List<WebElement> storeListElement = driver.findElements(storeListPrice);
+//        List<WebElement> storeDel = driver.findElements(By.cssSelector("del bdi"));
+//        List<WebElement> updatedList = storeListElement.stream().filter(val -> !storeDel.contains(val)).toList();
+//        return updatedList.stream().anyMatch(val-> (int)Double.parseDouble(val.getText().substring(1)) >= startingPrice && (int)Double.parseDouble(val.getText().substring(1)) <= endingPrice);
     }
 
 
     }
+
+
+
 
 
 

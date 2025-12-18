@@ -15,7 +15,6 @@ public class AddToCartTests extends BaseTests {
        var checkout = proceed.clickProceedCheckOut();
        checkout.billingDetails();
 
-      // checkout.setPlaceOrder();
 
 
 

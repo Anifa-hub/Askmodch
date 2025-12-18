@@ -2,7 +2,6 @@ package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -23,8 +22,7 @@ public class ProceedCheckOutPage {
     private By zipCode = By.id("billing_postcode");
     private By emailAddress = By.id("billing_email");
     private By phone = By.id("billing_phone");
-    //private By placeOrderBtn = By.id("place_order");
-   // public By placeOrder = By.id("place_order");
+
 
     public ProceedCheckOutPage(WebDriver driver) {
         this.driver = driver;
